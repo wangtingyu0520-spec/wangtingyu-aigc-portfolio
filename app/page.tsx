@@ -193,6 +193,8 @@ const tools = [
   { label: "视觉设计", mark: "◇", icon: "/tool-icons/visual-design.png", iconScale: 0.92, x: "91%", y: "88%", size: "md" },
 ];
 
+const assetUrl = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState("全部");
   const [activeWorkIndex, setActiveWorkIndex] = useState(1);
@@ -283,7 +285,7 @@ export default function Home() {
               className={`work-card ${work.format}`}
             >
               <div className="work-image">
-                {work.image ? <img src={work.image} alt={`${work.title} 封面`} /> : <div className="color-study"><span>COLOR</span><strong>GRADING</strong><i /></div>}
+                {work.image ? <img src={assetUrl(work.image)} alt={`${work.title} 封面`} /> : <div className="color-study"><span>COLOR</span><strong>GRADING</strong><i /></div>}
                 <div className="work-shade" />
                 <span className="work-category">{work.category}</span>
               </div>
@@ -291,7 +293,7 @@ export default function Home() {
               <div className="work-detail">
                 <p>{work.description}</p>
                 <div className="tag-list">{work.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-                <a className="watch-button" href={work.href}>{work.cta} <b>↗</b></a>
+                <a className="watch-button" href={work.href.startsWith("/") ? assetUrl(work.href) : work.href}>{work.cta} <b>↗</b></a>
                 {work.notice && <small>{work.notice}</small>}
               </div>
             </div>
@@ -324,7 +326,7 @@ export default function Home() {
         <div className="tool-wordmarks" aria-label="常用工具">
           {[tools.slice(0, 5), tools.slice(5, 10), tools.slice(10, 15)].map((row, rowIndex) => (
             <div className="tool-wordmark-row" key={rowIndex}>
-              {row.map((tool) => <Magnet key={tool.label} padding={50} disabled={false} magnetStrength={25} wrapperClassName="tool-magnet"><div className="tool-wordmark"><i aria-hidden="true">{tool.icon ? <img src={tool.icon} alt="" style={{ transform: `scale(${tool.iconScale ?? 1})` }} /> : tool.mark}</i><span>{tool.label}</span></div></Magnet>)}
+              {row.map((tool) => <Magnet key={tool.label} padding={50} disabled={false} magnetStrength={25} wrapperClassName="tool-magnet"><div className="tool-wordmark"><i aria-hidden="true">{tool.icon ? <img src={assetUrl(tool.icon)} alt="" style={{ transform: `scale(${tool.iconScale ?? 1})` }} /> : tool.mark}</i><span>{tool.label}</span></div></Magnet>)}
             </div>
           ))}
         </div>
