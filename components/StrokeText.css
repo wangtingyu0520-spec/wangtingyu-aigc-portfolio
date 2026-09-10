@@ -1,0 +1,58 @@
+.stroke-text {
+  margin: 19px 0 20px;
+  color: transparent;
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  letter-spacing: var(--letter-spacing);
+  line-height: .76;
+  text-transform: uppercase;
+  text-shadow: 0 5px 35px rgba(0, 0, 0, .28);
+}
+
+.stroke-text__line { display: block; }
+.stroke-text__line + .stroke-text__line { padding-left: 13.8vw; }
+
+/* 额外增加一个与原有可见留白等量的间距，使首屏两行标题间距翻倍。 */
+.hero-title .stroke-text__line + .stroke-text__line { margin-top: .06em; }
+.stroke-text__char { position: relative; display: inline-grid; }
+.stroke-text__outline,
+.stroke-text__fill { grid-area: 1 / 1; }
+
+.stroke-text__outline {
+  color: transparent;
+  -webkit-text-stroke: var(--stroke-width) var(--stroke-color);
+  clip-path: inset(0 100% 0 0);
+  filter: drop-shadow(0 0 7px color-mix(in srgb, var(--stroke-color) 35%, transparent));
+}
+
+.stroke-text__fill {
+  color: var(--fill-color);
+  clip-path: inset(0 100% 0 0);
+  text-shadow: 0 0 20px color-mix(in srgb, var(--stroke-color) 20%, transparent);
+}
+
+.stroke-text.is-active .stroke-text__outline {
+  animation: stroke-reveal var(--draw-duration) var(--text-ease) calc(var(--char-index) * var(--stagger)) both;
+}
+
+.stroke-text.is-active .stroke-text__fill--wipe {
+  animation: fill-wipe calc(var(--draw-duration) * .72) var(--text-ease) calc(var(--fill-delay) + var(--char-index) * var(--stagger)) both;
+}
+
+/* 首屏第二行作为纯描边文字，保持与第一行的层次对比。 */
+.hero-title .stroke-text__line:nth-child(2) .stroke-text__fill {
+  display: none;
+}
+
+@keyframes stroke-reveal { to { clip-path: inset(0 0 0 0); } }
+@keyframes fill-wipe { to { clip-path: inset(0 0 0 0); } }
+
+@media (max-width: 720px) {
+  .stroke-text { line-height: .8; }
+  .stroke-text__line + .stroke-text__line { padding-left: 5vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stroke-text__outline,
+  .stroke-text__fill { clip-path: inset(0 0 0 0); }
+}
