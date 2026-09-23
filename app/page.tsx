@@ -94,6 +94,17 @@ const works: Work[] = [
     cta: "在 Bilibili 观看完整短片",
   },
   {
+    id: "almost-goodbye",
+    title: "差一点告别",
+    category: "短片",
+    format: "landscape",
+    image: "/works/almost-goodbye.png",
+    description: "通过对白误导与白纱转场制造情绪反转，将一场看似走向告别的约会，自然过渡至婚礼时刻，完成关系与情感的递进。",
+    tags: ["仿真人短片", "情绪反转", "爱情叙事"],
+    href: "https://www.bilibili.com/video/BV1gohb61EVK/",
+    cta: "在 Bilibili 观看完整短片",
+  },
+  {
     id: "own-world",
     title: "自己的世界",
     category: "商业内容",
