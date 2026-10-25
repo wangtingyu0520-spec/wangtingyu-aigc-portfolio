@@ -246,7 +246,7 @@ export default function Home() {
           opacity={1}
         />
         <div className="hero-grain" aria-hidden="true" />
-        <div className="hero-meta hero-meta-top">AIGC / VIDEO / PORTFOLIO<br />SUZHOU · CN</div>
+        <div className="hero-meta hero-meta-top">AIGC / VIDEO / PORTFOLIO<br />NANJING · CN</div>
         <div className="hero-content">
           <div className="hero-title-stack">
             <p className="eyebrow">AIGC VIDEO CREATOR</p>
@@ -347,7 +347,7 @@ export default function Home() {
         <h2>LET&apos;S CREATE <span>WHAT&apos;S NEXT.</span></h2>
         <p className="contact-tagline">一起创造下一个可能</p>
         <a href="mailto:wangtingyu0520@gmail.com" className="email-link">wangtingyu0520@gmail.com</a>
-        <p className="contact-note">苏州 · 可通过邮箱/BOSS直聘联系</p>
+        <p className="contact-note">南京 · 可通过邮箱/BOSS直聘联系</p>
       </section>
 
       <footer><span>© 2026 WANG TING YU</span><span>AIGC VIDEO PORTFOLIO</span></footer>
